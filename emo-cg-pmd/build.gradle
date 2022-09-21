@@ -1,0 +1,16 @@
+plugins {
+    id 'java-library'
+}
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+dependencies {
+    api 'net.sourceforge.pmd:pmd-java:6.15.0'
+    api 'net.sourceforge.pmd:pmd-test:6.15.0'
+    api 'javax.annotation:javax.annotation-api:1.3.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+//test {
+//    useJUnitPlatform()
+//}

@@ -1,0 +1,4 @@
+rootProject.name = 'emo-coding-guardian'
+include ':emo-cg-pmd'
+include ':emo-cg-idea-plugin'
+
