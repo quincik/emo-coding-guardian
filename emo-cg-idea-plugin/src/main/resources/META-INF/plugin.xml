@@ -1,0 +1,23 @@
+<idea-plugin>
+    <id>com.emo.p3c.smartfox</id>
+    <name>Emo Java Coding Guidelines</name>
+    <description>Emo modified from Alibaba Java Coding Guidelines plug-in(version 2.1.0).</description>
+    <change-notes>
+        <![CDATA[
+             <ul>
+                0.0.1
+                <li>Adjust and transform the plug-in code to module mode, and uniformly use Grade management.</li>
+                <li>Provides simple skin replacement.</li>
+            </ul>
+        ]]>
+    </change-notes>
+    <vendor>alibaba</vendor>
+    <version>1.0.0-SNAPSHOT</version>
+    <idea-version since-build="183.4284"/>
+    <depends optional="true" config-file="p3c.xml">com.intellij.modules.java</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.vcs</depends>
+    <depends>com.intellij.modules.xml</depends>
+    <depends>com.intellij.modules.xdebugger</depends>
+</idea-plugin>

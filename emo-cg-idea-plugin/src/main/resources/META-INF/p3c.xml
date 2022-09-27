@@ -1,0 +1,54 @@
+<idea-plugin>
+    <project-components>
+        <component>
+            <implementation-class>com.alibaba.p3c.idea.component.AliProjectComponent</implementation-class>
+        </component>
+    </project-components>
+    <actions>
+        <action class="com.alibaba.p3c.idea.action.AliInspectionAction" id="AliP3CInspectionAction"
+                popup="true" text="编码规约扫描" >
+            <keyboard-shortcut keymap="$default"
+                               first-keystroke="shift ctrl alt J"/>
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="ChangesViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        <action class="com.alibaba.p3c.idea.action.ToggleProjectInspectionAction" id="ToggleProjectInspectionAction"
+                popup="true" text="关闭检测" >
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="ChangesViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        <action class="com.alibaba.p3c.idea.action.SwitchLanguageAction"
+                id="com.alibaba.p3c.idea.action.SwitchLanguageAction"
+               >
+        </action>
+        <group popup="true" id="com.alibaba.p3c.analytics.action_group"
+               class="com.alibaba.p3c.idea.action.EmoActionGroup">
+            <reference ref="AliP3CInspectionAction"/>
+            <reference ref="ToggleProjectInspectionAction"/>
+            <reference ref="com.alibaba.p3c.idea.action.SwitchLanguageAction"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </group>
+    </actions>
+
+    <extensionPoints>
+        <extensionPoint name="inspectionAction"
+                        interface="com.alibaba.p3c.idea.extensionpoints.InspectionActionExtensionPoint"/>
+    </extensionPoints>
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService
+                serviceImplementation="com.alibaba.p3c.idea.extentsions.config.P3cConfig"/>
+        <projectService
+                serviceImplementation="com.alibaba.p3c.idea.extentsions.config.SmartFoxProjectConfig"/>
+        <checkinHandlerFactory
+                implementation="com.alibaba.p3c.idea.extentsions.vcs.AliCodeAnalysisCheckinHandlerFactory"
+                order="first"/>
+        <inspectionToolProvider
+                implementation="com.alibaba.p3c.idea.extentsions.inspection.EmoLocalInspectionToolProvider"/>
+        <postStartupActivity
+                implementation="com.alibaba.p3c.idea.activity.CommonSettingsApplicationStartupActivity"/>
+    </extensions>
+</idea-plugin>
